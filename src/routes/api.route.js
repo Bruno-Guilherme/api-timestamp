@@ -1,15 +1,9 @@
 import { Router } from "express";
-
 const apiRouter = Router();
 
-// Pegar os 5 primeiros
-apiRouter.get("/", (req, res) => {
-    res.send("Entrou!")
-})
-
 // Criar um timestamp
-apiRouter.post("/api/:data", (req, res) => {
-    
+apiRouter.get("/api/:data", (req, res) => {
+    res.json({entrada: entrou})
 })
 // Deletar um timestamp
 
