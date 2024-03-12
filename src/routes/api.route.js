@@ -1,10 +1,9 @@
 import { Router } from "express";
+import apiController from "../controllers/api.controller.js"
 const apiRouter = Router();
 
 // Criar um timestamp
-apiRouter.get("/api/:data", (req, res) => {
-    res.json({entrada: entrou})
-})
+apiRouter.get("/:data", apiController.roteamentoURL);
 // Deletar um timestamp
 
 export default apiRouter;

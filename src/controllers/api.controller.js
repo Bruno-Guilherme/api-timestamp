@@ -1,17 +1,16 @@
-async function criarTSController(req, res) {
-    const { data } = req.body;
+async function roteamentoURL(req, res) {
+    const [dia, mes, ano] = req.params.data.split("-");
+    if (dia.length == 2) {
+        await res.json({utc: `${dia}-${mes}-${ano}`})
 
-    try {
-        const token = await apiService.criarTSService({
-            data
-        });
-        res.status(201).send(token);
-    } catch (error) {
-        return res.status(400).send(e.message);
+    } else {
+        res.json({
+            utc: `${ano}-${mes}-${dia}`
+        })
     }
 }
 
 
 export default {
-    criarTSController
+    roteamentoURL
 }
