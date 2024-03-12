@@ -1,11 +1,23 @@
-async function roteamentoURL(req, res) {
-    const [dia, mes, ano] = req.params.data.split("-");
-    if (dia.length == 2) {
-        await res.json({utc: `${dia}-${mes}-${ano}`})
+function roteamentoURL(req, res) {
+    // console.log(req.query)
+    // console.log(req.params)
+    if (req.verificador) {
+        const [dia, mes, ano] = req.params.data.split("-");
 
-    } else {
+        let data = "";
+
+        if (dia.length == 2) {
+            data = `${ano}-${mes}-${dia}`;    
+        } else if (dia.length == 4) {            
+            data = `${dia}-${mes}-${ano}`;
+        } else {
+            
+        }
+        const d = new Date(data);
+
         res.json({
-            utc: `${ano}-${mes}-${dia}`
+            "unix": Math.floor(d.getTime() / 10000.0),
+            "utc": d.toUTCString()
         })
     }
 }
